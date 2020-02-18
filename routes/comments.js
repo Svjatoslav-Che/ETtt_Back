@@ -41,6 +41,15 @@ router.delete('/', async (req, res, next) => {
   return res.json({result});
 });
 
+
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
+
+  const result = await models.comments.findAll({ where: { parentId: id } });
+
+  return res.json({ result });
+});
+
 router.post('/:id/positive', async (req, res, next) => {
   const {id} = req.params;
 
