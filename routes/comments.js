@@ -45,7 +45,7 @@ router.delete('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
 
-  const result = await models.comments.findAll({ where: { parentId: id } });
+  const result = await models.comments.findAll({ where: { parentId: id }, order: [['id', 'DESC'],], });
 
   return res.json({ result });
 });
